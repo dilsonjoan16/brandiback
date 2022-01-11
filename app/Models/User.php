@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Tymon\JWTAuth\Contracts\JWTSubject; 
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -18,7 +18,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'rol', 'estado', 'UsuarioCreacion', 'UsuarioModificacion'
     ];
 
     /**
@@ -57,5 +57,40 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function tieneUsuarios()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function UsuarioCreador()
+    {
+        return $this->belongsTo(User::class, 'UsuarioCreacion');
+    }
+
+    public function UsuarioModificador()
+    {
+        return $this->belongsTo(User::class, 'UsuarioModificacion');
+    }
+
+    public function tieneModalidadDeCurso()
+    {
+        return $this->hasMany(ModalidadCurso::class);
+    }
+
+    public function tieneTipoDeCurso()
+    {
+        return $this->hasMany(TipoCurso::class);
+    }
+
+    public function tieneAreaDeCurso()
+    {
+        return $this->hasMany(AreaCurso::class);
+    }
+
+    public function tieneCurso()
+    {
+        return $this->hasMany(Curso::class);
     }
 }
