@@ -15,16 +15,36 @@ class CreateAreaCursosTable extends Migration
     {
         Schema::create('area_cursos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('tipo_id')->unsigned();
+
+            $table->foreignId('tipo_id')
+                  ->unsigned()
+                  ->nullable()
+                  ->constrained('tipo_cursos')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();
+
             $table->string('nombre');
             $table->string('estado');
-            $table->bigInteger('UsuarioCreacion')->unsigned();
-            $table->bigInteger('UsuarioModificacion')->unsigned()->nullable();
+
+            $table->foreignId('UsuarioCreacion')
+                  ->unsigned()
+                  ->nullable()
+                  ->constrained('users')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();
+
+            $table->foreignId('UsuarioModificacion')
+                  ->unsigned()
+                  ->nullable()
+                  ->constrained('users')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();
+
             $table->timestamps();
 
-            $table->foreign('tipo_id')->references('id')->on('tipo_cursos')->onDelete('set null')->onUpdate('cascade');
-            $table->foreign('UsuarioCreacion')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
-            $table->foreign('UsuarioModificacion')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            // $table->foreign('tipo_id')->references('id')->on('tipo_cursos')->onDelete('set null')->onUpdate('cascade');
+            // $table->foreign('UsuarioCreacion')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            // $table->foreign('UsuarioModificacion')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
         });
     }
 

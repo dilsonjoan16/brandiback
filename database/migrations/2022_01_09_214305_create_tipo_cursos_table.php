@@ -15,16 +15,36 @@ class CreateTipoCursosTable extends Migration
     {
         Schema::create('tipo_cursos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('modalidad_id')->unsigned();
+
+            $table->foreignId('modalidad_id')
+                  ->unsigned()
+                  ->nullable()
+                  ->constrained('modalidad_cursos')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();
+
             $table->string('nombre');
             $table->string('estado');
-            $table->bigInteger('UsuarioCreacion')->unsigned();
-            $table->bigInteger('UsuarioModificacion')->unsigned()->nullable();
+
+            $table->foreignId('UsuarioCreacion')
+                  ->unsigned()
+                  ->nullable()
+                  ->constrained('users')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();
+
+            $table->foreignId('UsuarioModificacion')
+                  ->unsigned()
+                  ->nullable()
+                  ->constrained('users')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();
+
             $table->timestamps();
 
-            $table->foreign('modalidad_id')->references('id')->on('modalidad_cursos')->onDelete('set null')->onUpdate('cascade');
-            $table->foreign('UsuarioCreacion')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
-            $table->foreign('UsuarioModificacion')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            // $table->foreign('modalidad_id')->references('id')->on('modalidad_cursos')->onDelete('set null')->onUpdate('cascade');
+            // $table->foreign('UsuarioCreacion')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            // $table->foreign('UsuarioModificacion')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
         });
     }
 

@@ -17,12 +17,26 @@ class CreateModalidadCursosTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('estado');
-            $table->bigInteger('UsuarioCreacion')->unsigned();
-            $table->bigInteger('UsuarioModificacion')->unsigned()->nullable();
+
+            $table->foreignId('UsuarioCreacion')
+                  ->unsigned()
+                  ->nullable()
+                  ->constrained('users')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();
+
+            $table->foreignId('UsuarioModificacion')
+                  ->unsigned()
+                  ->nullable()
+                  ->constrained('users')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();
+
             $table->timestamps();
 
-            $table->foreign('UsuarioCreacion')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
-            $table->foreign('UsuarioMdoficacion')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            // $table->foreign('UsuarioCreacion')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');  
+
+            // $table->foreign('UsuarioModificacion')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
         });
     }
 
