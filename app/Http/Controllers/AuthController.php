@@ -70,25 +70,55 @@ class AuthController extends Controller
     }
 
     public function register(Request $request){
-    	$validator = Validator::make($request->all(), [
-    		'name' => 'required',
-    		'email' => 'required|string|email|max:100|unique:users',
-    		'password' => 'required|string|min:6',
-    	]);
 
-    	if($validator->fails()){
-    		return response()->json($validator->errors()->toJson(),400);
-    	}
+        $usuario = auth()->user();
+        //
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|string|max:100',
+                'email' => 'required|string|email|max:100|unique:users',
+                'password' => 'required|string|min:6|max:12|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/',
+                'rol' => 'string|in:Admin,Comun',
+                'estado' => 'string|in:Activo,Inactivo',
+                'UsuarioCreacion' => 'integer',
 
-    	$user = User::create(array_merge(
-    		$validator->validate(),
-    		['password' => Hash::make($request->get('password'))]
-    	));
+        ]);
 
-    	return response()->json([
-    		'message' => 'User logged Successfully',
-    		'user' => $user
-    	], 201);
+        if($validator->fails()){
+                return response()->json($validator->errors()->toJson(), 400);
+        }
+
+        $user = new User;
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password = Hash::make($request->get('password'));
+        $request->get('rol') == null ? $user->rol = "Comun" : $user->rol = $request->get('rol');
+        $request->get('estado') == null ? $user->estado = "Inactivo" : $user->rol = $request->get('rol');
+        $user->save();
+
+        $request->get('UsuarioCreacion') == null ? $user->UsuarioCreacion = $user->id : $user->UsuarioCreacion = $usuario->id;
+
+
+        return response()->json(compact('user'),201);
+
+    	// $validator = Validator::make($request->all(), [
+    	// 	'name' => 'required',
+    	// 	'email' => 'required|string|email|max:100|unique:users',
+    	// 	'password' => 'required|string|min:6|max:12|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/',
+    	// ]);
+
+    	// if($validator->fails()){
+    	// 	return response()->json($validator->errors()->toJson(),400);
+    	// }
+
+    	// $user = User::create(array_merge(
+    	// 	$validator->validate(),
+    	// 	['password' => Hash::make($request->get('password'))]
+    	// ));
+
+    	// return response()->json([
+    	// 	'message' => 'User logged Successfully',
+    	// 	'user' => $user
+    	// ], 201);
     }
 
     /**
@@ -103,7 +133,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth()->factory()->getTTL() * 1440
         ]);
     }
 }
