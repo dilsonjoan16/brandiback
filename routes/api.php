@@ -4,6 +4,7 @@ use App\Http\Controllers\AreaCursoController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\ModalidadCursoController;
 use App\Http\Controllers\TipoCursoController;
+use App\Http\Controllers\MailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
     Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
     Route::post('me', 'App\Http\Controllers\AuthController@me');
     Route::post('register', 'App\Http\Controllers\AuthController@register');
+    Route::post('recovery', [MailController::class, 'sendEmail']);
 
     // RUTAS DE MODALIDADES DE CURSOS
     Route::get('modalidad/cursos', [ModalidadCursoController::class, 'index']);

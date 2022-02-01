@@ -92,11 +92,9 @@ class AuthController extends Controller
         $user->email = $request->get('email');
         $user->password = Hash::make($request->get('password'));
         $request->get('rol') == null ? $user->rol = "Comun" : $user->rol = $request->get('rol');
-        $request->get('estado') == null ? $user->estado = "Inactivo" : $user->rol = $request->get('rol');
+        $request->get('estado') == null ? $user->estado = "Activo" : $user->rol = $request->get('rol');
+        $request->get('UsuarioCreacion') == null ? $user->UsuarioCreacion = 1 : $user->UsuarioCreacion = $usuario->id;
         $user->save();
-
-        $request->get('UsuarioCreacion') == null ? $user->UsuarioCreacion = $user->id : $user->UsuarioCreacion = $usuario->id;
-
 
         return response()->json(compact('user'),201);
 
