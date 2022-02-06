@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class TipoCursoController extends Controller
 {
     // MIDDLEWARE QUE PROTEGE LA RUTA
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:api');
+    // }
 
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class TipoCursoController extends Controller
      */
     public function index()
     {
-        $tipoActivo = TipoCurso::with("UsuarioCreador", "UsuarioModificador", "ModalidadDeCurso")->where('estado', 'ACTIVO')->get();
+        $tipoActivo = TipoCurso::with("UsuarioCreador", "UsuarioModificador", "ModalidadDeCurso")->where('estado', 'AC')->get();
         $tipoGeneral = TipoCurso::with("UsuarioCreador", "UsuarioModificador", "ModalidadDeCurso")->get();
 
         return response()->json(compact('tipoActivo', 'tipoGeneral'), 200);

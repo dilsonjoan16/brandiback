@@ -14,7 +14,10 @@ class TipoCursoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "modalidad_id" => $this->faker->numberBetween($min = 1, $max = 3),
+            "nombre" => $this->faker->randomElement($array = array ('Cursos permanentes', 'Cursos especiales', 'Cursos de campo', 'Cursos a empresas', 'Cursos a institutos')),
+            "estado" => $this->faker->randomElement($array = array ('AC', 'IN')),
+            "UsuarioCreacion" => 1
         ];
     }
 }
