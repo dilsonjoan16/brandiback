@@ -40,7 +40,7 @@ class ModalidadCursoController extends Controller
         $request->validate([
             "nombre" => "required|string|unique:modalidad_cursos,nombre",
             "estado" => "required|string",
-            "UsuarioCreacion" => "required|integer"
+            "UsuarioCreacion" => "integer"
         ]);
 
         $modalidad = new ModalidadCurso;

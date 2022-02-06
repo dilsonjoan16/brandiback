@@ -41,7 +41,7 @@ class AreaCursoController extends Controller
             "tipo_id" => "required|integer",
             "nombre" => "required|string|unique:area_cursos,nombre",
             "estado" => "required|string",
-            "UsuarioCreacion" => "required|integer"
+            "UsuarioCreacion" => "integer"
         ]);
 
         $area = new AreaCurso;
