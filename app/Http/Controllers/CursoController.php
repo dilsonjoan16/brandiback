@@ -42,7 +42,7 @@ class CursoController extends Controller
             "nombre" => "required|string|unique:cursos,nombre",
             "estado" => "required|string",
             "duracion" => "required|integer",
-            "UsuarioCreacion" => "required|integer"
+            "UsuarioCreacion" => "integer"
         ]);
 
         $curso = new Curso;

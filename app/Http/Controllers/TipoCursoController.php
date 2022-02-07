@@ -40,7 +40,7 @@ class TipoCursoController extends Controller
            "modalidad_id" => "required|integer",
            "nombre" => "required|string|unique:tipo_cursos,nombre",
            "estado" => "required|string",
-           "UsuarioCreacion" => "required|integer"
+           "UsuarioCreacion" => "integer"
         ]);
 
         $tipo = new TipoCurso;

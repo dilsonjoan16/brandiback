@@ -20,7 +20,7 @@ class ModalidadCursoController extends Controller
      */
     public function index()
     {
-        $modalidadActiva = ModalidadCurso::with("UsuarioCreador", "UsuarioModificador")->where('estado', 'AC')->get();
+        $modalidadActiva = ModalidadCurso::with("UsuarioCreador", "UsuarioModificador")->where('estado', 'ACTIVO')->get();
         $modalidadGeneral = ModalidadCurso::with("UsuarioCreador", "UsuarioModificador")->get();
 
         return response()->json(compact('modalidadActiva', 'modalidadGeneral'), 200);
@@ -40,7 +40,7 @@ class ModalidadCursoController extends Controller
         $request->validate([
             "nombre" => "required|string|unique:modalidad_cursos,nombre",
             "estado" => "required|string",
-            "UsuarioCreacion" => "required|integer"
+            "UsuarioCreacion" => "integer"
         ]);
 
         $modalidad = new ModalidadCurso;
