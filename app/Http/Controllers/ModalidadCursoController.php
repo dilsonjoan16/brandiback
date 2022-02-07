@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class ModalidadCursoController extends Controller
 {
     // MIDDLEWARE QUE PROTEGE LA RUTA
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:api');
+    // }
 
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class ModalidadCursoController extends Controller
      */
     public function index()
     {
-        $modalidadActiva = ModalidadCurso::with("UsuarioCreador", "UsuarioModificador")->where('estado', 'ACTIVO')->get();
+        $modalidadActiva = ModalidadCurso::with("UsuarioCreador", "UsuarioModificador")->where('estado', 'AC')->get();
         $modalidadGeneral = ModalidadCurso::with("UsuarioCreador", "UsuarioModificador")->get();
 
         return response()->json(compact('modalidadActiva', 'modalidadGeneral'), 200);

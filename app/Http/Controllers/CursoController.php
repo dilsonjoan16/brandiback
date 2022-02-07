@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class CursoController extends Controller
 {
     // MIDDLEWARE QUE PROTEGE LA RUTA
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:api');
+    // }
 
     /**
      * Display a listing of the resource.
