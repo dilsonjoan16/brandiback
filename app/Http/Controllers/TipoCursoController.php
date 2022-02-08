@@ -20,7 +20,7 @@ class TipoCursoController extends Controller
      */
     public function index()
     {
-        $tipoActivo = TipoCurso::with("UsuarioCreador", "UsuarioModificador", "ModalidadDeCurso")->where('estado', 'AC')->get();
+        $tipoActivo = TipoCurso::with("UsuarioCreador", "UsuarioModificador", "ModalidadDeCurso")->where('estado', 'ACTIVO')->get();
         $tipoGeneral = TipoCurso::with("UsuarioCreador", "UsuarioModificador", "ModalidadDeCurso")->get();
 
         return response()->json(compact('tipoActivo', 'tipoGeneral'), 200);

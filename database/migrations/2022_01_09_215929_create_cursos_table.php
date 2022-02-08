@@ -25,6 +25,7 @@ class CreateCursosTable extends Migration
 
             $table->string('nombre');
             $table->string('estado');
+            $table->string('descripcion');
             $table->integer('duracion');
 
             $table->bigInteger('UsuarioCreacion')

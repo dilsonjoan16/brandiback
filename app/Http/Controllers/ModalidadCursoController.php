@@ -85,7 +85,7 @@ class ModalidadCursoController extends Controller
         ]);
 
         $modalidad = ModalidadCurso::find($id);
-        $request->get('nombre') == null ? $modalidad->nombre = $modalidad->nombre : $modalidad->nombre = $request->get('nombre');
+        $request->get('nombre') == null || $request->get('nombre') == $modalidad->nombre ? $modalidad->nombre = $modalidad->nombre : $modalidad->nombre = $request->get('nombre');
         $request->get('estado') == null ? $modalidad->estado = $modalidad->estado : $modalidad->estado = $request->get('estado');
         $modalidad->UsuarioModificacion = $usuario->id;
         $modalidad->update();
