@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AreaCursoController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\ModalidadCursoController;
 use App\Http\Controllers\TipoCursoController;
@@ -32,6 +33,8 @@ Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
     Route::post('me', 'App\Http\Controllers\AuthController@me');
     Route::post('register', 'App\Http\Controllers\AuthController@register');
     Route::post('recovery', [MailController::class, 'sendEmail']);
+    Route::get('perfil/{id}', [AuthController::class, 'perfil']);
+    Route::put('usuario/modificar/{id}', [AuthController::class, 'modificar']);
 
     // RUTAS DE MODALIDADES DE CURSOS
     Route::get('modalidad/cursos', [ModalidadCursoController::class, 'index']);

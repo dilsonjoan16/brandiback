@@ -18,7 +18,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','register']]);
+        $this->middleware('auth:api', ['except' => ['login','register','perfil']]);
     }
 
     /**
@@ -134,5 +134,38 @@ class AuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 1440
         ]);
+    }
+
+    public function perfil($id)
+    {
+        $usuario = User::find($id);
+
+        return response()->json(compact('usuario'), 200);
+    }
+
+    public function modificar(Request $request, $id)
+    {
+
+        $usuario = auth()->user();
+
+        $request->validate([
+            'name' => 'string|max:100',
+            'email' => 'string|email|max:100',
+            // 'password' => 'string|min:6|max:12',
+            'rol' => 'string|in:Admin,Comun',
+            'estado' => 'string|in:ACTIVO,INACTIVO',
+            'UsuarioModificacion' => 'integer',
+        ]);
+
+        $user = User::find($id);
+        $request->get('name') == null || $request->get('name') == "" ? $user->name = $user->name : $user->name = $request->get('name');
+        $request->get('email') == null || $request->get('email') == "" ? $user->email = $user->email : $user->email = $request->get('email');
+        $request->get('password') == null || $request->get('password') == "" ? $user->password = $user->password : $user->password = Hash::make($request->get('password'));
+        $request->get('rol') == null || $request->get('rol') == "" ? $user->rol = "Comun" : $user->rol = $request->get('rol');
+        $request->get('estado') == null || $request->get('estado') == "" ? $user->estado = "ACTIVO" : $user->rol = $request->get('rol');
+        $request->get('UsuarioModificacion') == null ? $user->UsuarioModificacion = 1 : $user->UsuarioModificacion = $usuario->id;
+        $user->update();
+
+        return response()->json(compact('user'), 200);
     }
 }
