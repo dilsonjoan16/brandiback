@@ -43,6 +43,7 @@ class CursoController extends Controller
             "estado" => "required|string",
             "descripcion" => "required|string",
             "duracion" => "required|integer",
+            "precio" => "required|integer",
             "UsuarioCreacion" => "integer"
         ]);
 
@@ -52,6 +53,7 @@ class CursoController extends Controller
         $curso->estado = $request->get('estado');
         $curso->descripcion = $request->get('descripcion');
         $curso->duracion = $request->get('duracion');
+        $curso->precio = $request->get('precio');
         $curso->UsuarioCreacion = $usuario->id;
         $curso->save();
 
@@ -91,6 +93,7 @@ class CursoController extends Controller
             "estado" => "string",
             "descripcion" => "required|string",
             "duracion" => "integer",
+            "precio" => "integer",
             "UsuarioModificacion" => "integer"
         ]);
 
@@ -100,6 +103,7 @@ class CursoController extends Controller
         $request->get('estado') == null ? $curso->estado = $curso->estado : $curso->estado = $request->get('estado');
         $request->get('descripcion') == null ? $curso->descripcion = $curso->descripcion : $curso->descripcion = $request->get('descripcion');
         $request->get('duracion') == null ? $curso->duracion = $curso->duracion : $curso->duracion = $request->get('duracion');
+        $request->get('precio') == null ? $curso->precio = $curso->precio : $curso->precio = $request->get('precio');
         $curso->UsuarioModificacion = $usuario->id;
         $curso->update();
 

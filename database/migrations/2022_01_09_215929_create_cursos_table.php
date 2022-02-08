@@ -27,6 +27,7 @@ class CreateCursosTable extends Migration
             $table->string('estado');
             $table->string('descripcion');
             $table->integer('duracion');
+            $table->integer('precio');
 
             $table->bigInteger('UsuarioCreacion')
                   ->unsigned()

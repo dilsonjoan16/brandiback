@@ -121,6 +121,7 @@ class DatabaseSeeder extends Seeder
             "estado" => "ACTIVO",
             "descripcion" => "Laravel en su totalidad",
             "duracion" => 310,
+            "precio" => 100,
             "UsuarioCreacion" => 1,
         ]);
         DB::table('cursos')->insert([
@@ -129,6 +130,7 @@ class DatabaseSeeder extends Seeder
             "estado" => "ACTIVO",
             "descripcion" => "Se aprendera a calibrar la presion en BARES, PSI y demas medidas",
             "duracion" => 210,
+            "precio" => 120,
             "UsuarioCreacion" => 1,
         ]);
         DB::table('cursos')->insert([
@@ -137,6 +139,7 @@ class DatabaseSeeder extends Seeder
             "estado" => "ACTIVO",
             "descripcion" => "Se aprendera sobre la Teoria de Sigmud Freud de la Personalidad multiple",
             "duracion" => 72,
+            "precio" => 130,
             "UsuarioCreacion" => 1,
         ]);
         DB::table('cursos')->insert([
@@ -145,6 +148,7 @@ class DatabaseSeeder extends Seeder
             "estado" => "ACTIVO",
             "descripcion" => "Se aprendera sobre el Liderazgo como herramienta formadora de Hombres",
             "duracion" => 172,
+            "precio" => 140,
             "UsuarioCreacion" => 1,
         ]);
         DB::table('cursos')->insert([
@@ -153,6 +157,7 @@ class DatabaseSeeder extends Seeder
             "estado" => "ACTIVO",
             "descripcion" => "Se aprendera sobre Excel a un nivel superior",
             "duracion" => 162,
+            "precio" => 150,
             "UsuarioCreacion" => 1,
         ]);
         DB::table('cursos')->insert([
@@ -161,6 +166,7 @@ class DatabaseSeeder extends Seeder
             "estado" => "ACTIVO",
             "descripcion" => "Se aprendera sobre la construccion de circuitos electricos en los hogares",
             "duracion" => 90,
+            "precio" => 160,
             "UsuarioCreacion" => 1,
         ]);
         // User::factory(1)->create();

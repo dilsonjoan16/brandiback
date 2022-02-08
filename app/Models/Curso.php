@@ -10,7 +10,7 @@ class Curso extends Model
     use HasFactory;
 
     protected $fillable = [
-        "area_id", "nombre", "estado", "descripcion", "duracion", "UsuarioCreacion", "UsuarioModificacion"
+        "area_id", "nombre", "estado", "descripcion", "duracion", "precio", "UsuarioCreacion", "UsuarioModificacion"
     ];
 
     public function UsuarioCreador()

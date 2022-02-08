@@ -79,7 +79,7 @@ class AuthController extends Controller
                 'email' => 'required|string|email|max:100|unique:users',
                 'password' => 'required|string|min:6|max:12|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/',
                 'rol' => 'string|in:Admin,Comun',
-                'estado' => 'string|in:Activo,Inactivo',
+                'estado' => 'string|in:ACTIVO,INACTIVO',
                 'UsuarioCreacion' => 'integer',
 
         ]);
@@ -93,7 +93,7 @@ class AuthController extends Controller
         $user->email = $request->get('email');
         $user->password = Hash::make($request->get('password'));
         $request->get('rol') == null ? $user->rol = "Comun" : $user->rol = $request->get('rol');
-        $request->get('estado') == null ? $user->estado = "Activo" : $user->rol = $request->get('rol');
+        $request->get('estado') == null ? $user->estado = "ACTIVO" : $user->rol = $request->get('rol');
         $request->get('UsuarioCreacion') == null ? $user->UsuarioCreacion = 1 : $user->UsuarioCreacion = $usuario->id;
         $user->save();
 
