@@ -32,88 +32,118 @@ class DatabaseSeeder extends Seeder
             "nombre" => "Presencial",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('modalidad_cursos')->insert([
             "nombre" => "Mixta",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('modalidad_cursos')->insert([
             "nombre" => "Virtual",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('tipo_cursos')->insert([
             "modalidad_id" => 1,
             "nombre" => "Cursos a Empresas",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('tipo_cursos')->insert([
             "modalidad_id" => 1,
             "nombre" => "Cursos a Empresarios",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('tipo_cursos')->insert([
             "modalidad_id" => 2,
             "nombre" => "Cursos Especiales",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('tipo_cursos')->insert([
             "modalidad_id" => 2,
             "nombre" => "Cursos Tecnicos",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('tipo_cursos')->insert([
             "modalidad_id" => 3,
             "nombre" => "Cursos Gerenciales",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('tipo_cursos')->insert([
             "modalidad_id" => 3,
             "nombre" => "Cursos a Autonomos",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('area_cursos')->insert([
             "tipo_id" => 1,
             "nombre" => "Informatica",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('area_cursos')->insert([
             "tipo_id" => 2,
             "nombre" => "Plomeria",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('area_cursos')->insert([
             "tipo_id" => 3,
             "nombre" => "Psicologia",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('area_cursos')->insert([
             "tipo_id" => 4,
             "nombre" => "Desarrollo Humano",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('area_cursos')->insert([
             "tipo_id" => 5,
             "nombre" => "Ofimatica",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('area_cursos')->insert([
             "tipo_id" => 6,
             "nombre" => "Electricidad",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('cursos')->insert([
             "area_id" => 1,
@@ -123,6 +153,8 @@ class DatabaseSeeder extends Seeder
             "duracion" => 310,
             "precio" => 100,
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('cursos')->insert([
             "area_id" => 2,
@@ -132,6 +164,8 @@ class DatabaseSeeder extends Seeder
             "duracion" => 210,
             "precio" => 120,
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('cursos')->insert([
             "area_id" => 3,
@@ -141,6 +175,8 @@ class DatabaseSeeder extends Seeder
             "duracion" => 72,
             "precio" => 130,
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('cursos')->insert([
             "area_id" => 4,
@@ -150,6 +186,8 @@ class DatabaseSeeder extends Seeder
             "duracion" => 172,
             "precio" => 140,
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('cursos')->insert([
             "area_id" => 5,
@@ -159,6 +197,8 @@ class DatabaseSeeder extends Seeder
             "duracion" => 162,
             "precio" => 150,
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         DB::table('cursos')->insert([
             "area_id" => 6,
@@ -168,6 +208,8 @@ class DatabaseSeeder extends Seeder
             "duracion" => 90,
             "precio" => 160,
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
         ]);
         // User::factory(1)->create();
         // ModalidadCurso::factory(3)->create();
