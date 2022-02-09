@@ -24,6 +24,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+    Route::post('registerAdmin', [AuthController::class, 'onlyAdmin']);
+
 Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
 
     // RUTAS USUARIO
@@ -35,6 +37,10 @@ Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
     Route::post('recovery', [MailController::class, 'sendEmail']);
     Route::get('perfil/{id}', [AuthController::class, 'perfil']);
     Route::put('usuario/modificar/{id}', [AuthController::class, 'modificar']);
+    Route::get('usuarios', [AuthController::class, 'usuarios']);
+    Route::delete('usuario/eliminar/{id}', [AuthController::class, 'eliminar']);
+    Route::post('usuario/crear', [AuthController::class, 'createAdmin']);
+    Route::put('usuario/modificar/admin/{id}', [AuthController::class, 'modificarAdmin']);
 
     // RUTAS DE MODALIDADES DE CURSOS
     Route::get('modalidad/cursos', [ModalidadCursoController::class, 'index']);
