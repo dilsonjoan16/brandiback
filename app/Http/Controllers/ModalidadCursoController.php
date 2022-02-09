@@ -79,7 +79,7 @@ class ModalidadCursoController extends Controller
         $usuario = auth()->user();
         // "nombre", "estado", "UsuarioCreacion", "UsuarioModificacion"
         $request->validate([
-            "nombre" => "string|unique:modalidad_cursos,nombre",
+            "nombre" => "string",
             "estado" => "string",
             "UsuarioModificacion" => "integer"
         ]);

@@ -89,7 +89,7 @@ class CursoController extends Controller
 
         $request->validate([
             "area_id" => "integer",
-            "nombre" => "string|unique:cursos,nombre",
+            "nombre" => "string",
             "estado" => "string",
             "descripcion" => "required|string",
             "duracion" => "integer",

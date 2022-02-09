@@ -83,7 +83,7 @@ class AreaCursoController extends Controller
 
         $request->validate([
             "tipo_id" => "integer",
-            "nombre" => "string|unique:area_cursos,nombre",
+            "nombre" => "string",
             "estado" => "string",
             "UsuarioModificacion" => "integer"
         ]);
