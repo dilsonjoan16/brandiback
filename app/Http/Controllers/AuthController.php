@@ -93,7 +93,7 @@ class AuthController extends Controller
         $user->email = $request->get('email');
         $user->password = Hash::make($request->get('password'));
         $request->get('rol') == null ? $user->rol = "Comun" : $user->rol = $request->get('rol');
-        $request->get('estado') == null ? $user->estado = "ACTIVO" : $user->rol = $request->get('rol');
+        $request->get('estado') == null ? $user->estado = "ACTIVO" : $user->estado = $request->get('estado');
         $request->get('UsuarioCreacion') == null ? $user->UsuarioCreacion = 1 : $user->UsuarioCreacion = $usuario->id;
         $user->save();
 
@@ -163,7 +163,7 @@ class AuthController extends Controller
         $request->get('password') == null || $request->get('password') == "" ? $user->password = $user->password : $user->password = Hash::make($request->get('password'));
         $user->rol == "Admin" ? $user->rol = "Admin" : $user->rol = "Comun";
         // $request->get('rol') == null || $request->get('rol') == "" ? $user->rol = "Comun" : $user->rol = $request->get('rol');
-        $request->get('estado') == null || $request->get('estado') == "" ? $user->estado = "ACTIVO" : $user->rol = $request->get('rol');
+        $request->get('estado') == null || $request->get('estado') == "" ? $user->estado = "ACTIVO" : $user->estado = $request->get('estado');
         $request->get('UsuarioModificacion') == null ? $user->UsuarioModificacion = 1 : $user->UsuarioModificacion = $usuario->id;
         $user->update();
 
@@ -199,7 +199,7 @@ class AuthController extends Controller
         $request->get('password') == null || $request->get('password') == "" ? $user->password = $user->password : $user->password = Hash::make($request->get('password'));
         // $user->rol = "Comun";
         $request->get('rol') == null || $request->get('rol') == "" ? $user->rol = "Comun" : $user->rol = $request->get('rol');
-        $request->get('estado') == null || $request->get('estado') == "" ? $user->estado = "ACTIVO" : $user->rol = $request->get('rol');
+        $request->get('estado') == null || $request->get('estado') == "" ? $user->estado = "ACTIVO" : $user->estado = $request->get('estado');
         // $request->get('UsuarioModificacion') == null ? $user->UsuarioModificacion = 1 : $user->UsuarioModificacion = $usuario->id;
         $user->UsuarioModificacion = $usuario->id;
         $user->update();

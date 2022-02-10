@@ -62,7 +62,7 @@ class ModalidadCursoController extends Controller
      */
     public function show($id)
     {
-        $modalidad = ModalidadCurso::with("UsuarioCreador", "UsuarioModificador")->find($id);
+        $modalidad = ModalidadCurso::with("UsuarioCreador", "UsuarioModificador", "TipoDeCurso")->find($id);
 
         return response()->json(compact('modalidad'), 200);
     }

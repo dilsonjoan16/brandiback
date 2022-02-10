@@ -63,7 +63,7 @@ class TipoCursoController extends Controller
      */
     public function show($id)
     {
-        $tipo = TipoCurso::with("UsuarioCreador", "UsuarioModificador", "ModalidadDeCurso")->find($id);
+        $tipo = TipoCurso::with("UsuarioCreador", "UsuarioModificador", "ModalidadDeCurso", "AreaDeCurso")->find($id);
 
         return response()->json(compact('tipo'), 200);
     }

@@ -30,6 +30,6 @@ class TipoCurso extends Model
 
     public function AreaDeCurso()
     {
-        return $this->hasMany(AreaCurso::class);
+        return $this->hasMany(AreaCurso::class, 'tipo_id');
     }
 }

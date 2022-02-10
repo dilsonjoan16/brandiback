@@ -64,7 +64,7 @@ class AreaCursoController extends Controller
      */
     public function show($id)
     {
-        $area = AreaCurso::with("UsuarioCreador", "UsuarioModificador", "TipoDeCurso")->find($id);
+        $area = AreaCurso::with("UsuarioCreador", "UsuarioModificador", "TipoDeCurso", "Curso", "Curso.AreaDeCurso")->find($id);
 
         return response()->json(compact('area'), 200);
     }
