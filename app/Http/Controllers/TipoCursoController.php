@@ -81,7 +81,7 @@ class TipoCursoController extends Controller
         //  "modalidad_id", "nombre", "estado", "UsuarioCreacion", "UsuarioModificacion"
         $request->validate([
            "modalidad_id" => "integer",
-           "nombre" => "string|unique:tipo_cursos,nombre",
+           "nombre" => "string",
            "estado" => "string",
            "UsuarioModificacion" => "integer"
         ]);
