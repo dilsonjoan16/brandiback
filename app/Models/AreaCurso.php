@@ -30,6 +30,6 @@ class AreaCurso extends Model
 
     public function Curso()
     {
-        return $this->hasMany(Curso::class);
+        return $this->hasMany(Curso::class, 'area_id');
     }
 }

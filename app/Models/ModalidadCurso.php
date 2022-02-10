@@ -25,6 +25,6 @@ class ModalidadCurso extends Model
 
     public function TipoDeCurso()
     {
-        return $this->hasMany(TipoCurso::class);
+        return $this->hasMany(TipoCurso::class, 'modalidad_id');
     }
 }

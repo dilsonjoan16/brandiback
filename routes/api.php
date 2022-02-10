@@ -70,4 +70,7 @@ Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
      Route::put('cursos/modificar/{id}', [CursoController::class, 'update']);
      Route::delete('cursos/eliminar/{id}', [CursoController::class, 'destroy']);
 
+     // RUTAS PARA EL ROL COMUN
+     
+
 });
