@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             "rol" => "Admin",
             "estado" => "ACTIVO",
             "UsuarioCreacion" => 1,
+            "created_at" => date('Y-m-d H:m:s'),
+            "updated_at" => date('Y-m-d H:m:s'),
           ]);
         DB::table('modalidad_cursos')->insert([
             "nombre" => "Presencial",
