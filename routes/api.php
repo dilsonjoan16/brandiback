@@ -70,7 +70,10 @@ Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
      Route::put('cursos/modificar/{id}', [CursoController::class, 'update']);
      Route::delete('cursos/eliminar/{id}', [CursoController::class, 'destroy']);
 
+    // RUTA EMAIL DE COMPRA DE CURSOS
+    Route::get('cursos/compra/{id}/{us}', [MailController::class, 'CompraMail']);
+
      // RUTAS PARA EL ROL COMUN
-     
+
 
 });
