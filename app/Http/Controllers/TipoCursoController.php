@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
 use App\Models\TipoCurso;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+// use Maatwebsite\Excel\Excel;
 
 class TipoCursoController extends Controller
 {
@@ -114,4 +117,38 @@ class TipoCursoController extends Controller
 
         return response()->json(compact('message', 'tipo'), 200);
     }
+    public function export($indicador){
+        switch ($indicador) {
+            case '0':
+
+                set_time_limit(300);
+                return Excel::download(new UsersExport, 'tipos_de_cursos.xlsx');
+
+                break;
+            case '1':
+
+                set_time_limit(300);
+                return (new UsersExport)->download('tipos_de_cursos.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+
+                break;
+            case '2':
+
+                set_time_limit(300);
+                return (new UsersExport)->download('tipos_de_cursos.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
+
+                break;
+            case '3':
+
+                set_time_limit(300);
+                return (new UsersExport)->download('tipos_de_cursos.html', \Maatwebsite\Excel\Excel::HTML);
+
+                break;
+            default:
+
+                return response('Existe un problema', 500);
+
+                break;
+        }
+    }
+
 }

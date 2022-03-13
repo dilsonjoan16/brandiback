@@ -28,6 +28,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
 
+    // RUTAS PARA EXPORTAR ARCHIVOS EXCEL
+    Route::get('tipo/cursos/export/pdf/{indicador}', [TipoCursoController::class, 'export']);
+
     // RUTAS USUARIO
     Route::post('login', 'App\Http\Controllers\AuthController@login');
     Route::post('logout', 'App\Http\Controllers\AuthController@logout');
