@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\UsersExport;
+use App\Imports\UsersImport;
 use App\Models\TipoCurso;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -147,6 +148,22 @@ class TipoCursoController extends Controller
 
                 return response('Existe un problema', 500);
 
+                break;
+        }
+    }
+
+    public function import($indicador, Request $request){
+        switch ($indicador) {
+            case '0':
+                set_time_limit(300);
+                return Excel::import(new UsersImport, $request->file('data'));
+                break;
+            case '1':
+                set_time_limit(300);
+                return Excel::toCollection(new UsersImport, $request->file('data'));
+                break;
+            default:
+                return response('Existe un problema', 500);
                 break;
         }
     }
